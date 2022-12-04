@@ -1,9 +1,13 @@
+using DictionaryApp.Infrastructure.IoC;
+using DictionaryApp.Presentation.Api;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services
+    .AddInfrastructure()
+    .AddApplication()
+    .AddPresentation();
 
 var app = builder.Build();
 

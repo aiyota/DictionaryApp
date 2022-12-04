@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DictionaryApp.Application\DictionaryApp.Application.csproj" />
     <ProjectReference Include="..\DictionaryApp.Contracts\DictionaryApp.Contracts.csproj" />
+    <ProjectReference Include="..\DictionaryApp.Infrastructure.IoC\DictionaryApp.Infrastructure.IoC.csproj" />
   </ItemGroup>
 
 </Project>
