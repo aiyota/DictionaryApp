@@ -31,8 +31,9 @@ public class AuthenticationService : IAuthenticationService
         string email,
         string password)
     {
-        if (await _userData.GetByUserNameAsync(userName) is not null)
-            throw new DuplicateUserNameException();
+        if (await _userData.GetByUserNameAsync(userName) is not null
+            || await _userData.GetByEmailAsync(email) is not null)
+            throw new DuplicateUserException();
 
         var user = new User
         {

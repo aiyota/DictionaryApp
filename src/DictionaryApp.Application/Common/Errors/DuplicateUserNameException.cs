@@ -2,9 +2,9 @@
 
 namespace DictionaryApp.Application.Common.Errors;
 
-internal class DuplicateUserNameException : Exception, IServiceException
+internal class DuplicateUserException : Exception, IServiceException
 {
     public HttpStatusCode StatusCode => HttpStatusCode.Conflict;
 
-    public string ErrorMessage => "Account with this username already exists.";
+    public string ErrorMessage => "Account with this username and/or email already exists.";
 }

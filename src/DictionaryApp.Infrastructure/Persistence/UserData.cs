@@ -44,6 +44,11 @@ public class UserData : IUserData
         return QueryAsync<dynamic, User>(StoredProcedures.User.Get, new { UserName = userName });
     }
 
+    public Task<User?> GetByEmailAsync(string email)
+    {
+        return QueryAsync<dynamic, User>(StoredProcedures.User.Get, new { Email = email });
+    }
+
     public Task<User> UpdateAsync(
         Guid id,
         string? userName = null,
