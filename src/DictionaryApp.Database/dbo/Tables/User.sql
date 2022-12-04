@@ -9,5 +9,6 @@
     [EmailConfirmed] BIT NOT NULL DEFAULT 0, 
     [DateJoined] DATETIME2 NOT NULL DEFAULT GETDATE(), 
     [DateModified] DATETIME2 NULL, 
-    CONSTRAINT [UQ_User_Email] UNIQUE ([Email]) 
+    CONSTRAINT [UQ_User_Email] UNIQUE ([Email]),
+    CONSTRAINT [UQ_User_UserName] UNIQUE ([UserName])
 )
