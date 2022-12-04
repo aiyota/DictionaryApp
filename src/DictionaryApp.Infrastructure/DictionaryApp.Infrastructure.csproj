@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DictionaryApp.Application\DictionaryApp.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DataAccessLibrary">
+      <HintPath>..\..\..\DataAccessLibraryDll\DataAccessLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

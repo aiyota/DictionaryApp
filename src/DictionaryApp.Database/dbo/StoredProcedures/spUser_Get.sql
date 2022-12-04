@@ -6,7 +6,7 @@
 -- =============================================
 CREATE PROCEDURE [dbo].[spUser_Get]
 	 @Id nvarchar(36) = NULL
-	,@Email nvarchar(255) = NULL
+	,@UserName nvarchar(255) = NULL
 AS
 BEGIN
 	SELECT 
@@ -23,5 +23,5 @@ BEGIN
 	WHERE 
 		(@Id IS NULL OR [Id] = @Id)
 		AND
-		(@Email IS NULL OR [Email] = @Email)
+		(@UserName IS NULL OR [UserName] = @UserName)
 END
