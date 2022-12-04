@@ -1,21 +1,27 @@
 ﻿using DictionaryApp.Application.Abstractions;
 using DictionaryApp.Application.Common.Abstractions.Authentication;
 using DictionaryApp.Application.Common.Errors;
+using DictionaryApp.Application.Services.Common.Authentication;
 using DictionaryApp.Domain.Abstractions;
 using DictionaryApp.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace DictionaryApp.Application.Services.Common.Authentication;
+namespace DictionaryApp.Application.Services.Authentication;
 
 public class AuthenticationService : IAuthenticationService
 {
     private readonly IUserData _userData;
     private readonly ITokenGenerator _tokenGenerator;
+    private readonly IHashingService _hashingService;
 
-    public AuthenticationService(IUserData userData, ITokenGenerator tokenGenerator)
+    public AuthenticationService(
+        IUserData userData,
+        ITokenGenerator tokenGenerator,
+        IHashingService hashingService)
     {
         _userData = userData;
         _tokenGenerator = tokenGenerator;
+        _hashingService = hashingService;
     }
 
     public async Task<AuthenticationResult> Register(
@@ -34,7 +40,7 @@ public class AuthenticationService : IAuthenticationService
             FirstName = firstName,
             LastName = lastName,
             Email = email,
-            PasswordHash = Guid.NewGuid().ToString(), // temporary for now
+            PasswordHash = _hashingService.HashPassword(password),
         };
 
         var newUser = await _userData.CreateAsync(user);
@@ -44,11 +50,21 @@ public class AuthenticationService : IAuthenticationService
         return new AuthenticationResult(newUser, token, cookieOptions);
     }
 
-    public CookieOptions GetRemoveTokenFromCookieOptions() =>
-        _tokenGenerator.GetRemoveTokenFromCookieOptions();
+    public async Task<AuthenticationResult> Login(
+        string userName,
+        string password)
+    {
+        if (await _userData.GetByUserNameAsync(userName) is not User user)
+            throw new UserDoesNotExistException();
 
-    public CookieOptions GetUserTokenCookieOptions() =>
-        _tokenGenerator.GetUserTokenCookieOptions();
+        if (!_hashingService.VerifyPassword(user.PasswordHash, password))
+            throw new NotAuthorizedException();
+
+        var token = _tokenGenerator.GenerateUserToken(user);
+        var cookieOptions = _tokenGenerator.GetUserTokenCookieOptions();
+
+        return new AuthenticationResult(user, token, cookieOptions);
+    }
 
     public Task<UserResult> GetUser(Guid id)
     {
@@ -60,10 +76,9 @@ public class AuthenticationService : IAuthenticationService
         throw new NotImplementedException();
     }
 
-    public Task<AuthenticationResult> Login(
-        string userName,
-        string password)
-    {
-        throw new NotImplementedException();
-    }
+    public CookieOptions GetRemoveTokenFromCookieOptions() =>
+        _tokenGenerator.GetRemoveTokenFromCookieOptions();
+
+    public CookieOptions GetUserTokenCookieOptions() =>
+        _tokenGenerator.GetUserTokenCookieOptions();
 }

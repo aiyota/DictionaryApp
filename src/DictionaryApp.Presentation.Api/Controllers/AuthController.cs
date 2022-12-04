@@ -2,6 +2,7 @@
 using DictionaryApp.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using DictionaryApp.Application.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DictionaryApp.Presentation.Api.Controllers;
 
@@ -23,6 +24,19 @@ public class AuthController : ApiControllerBase
             request.FirstName,
             request.LastName,
             request.Email,
+            request.Password);
+
+        SetTokenAsCookie(result.Token, result.CookieOptions);
+
+        return Ok();
+    }
+
+    [AllowAnonymous]
+    [HttpPost(ApiRoutes.Auth.Login)]
+    public async Task<ActionResult<AuthenticationResponse>> Login(LoginRequest request)
+    {
+        var result = await _authenticationService.Login(
+            request.UserName,
             request.Password);
 
         SetTokenAsCookie(result.Token, result.CookieOptions);
