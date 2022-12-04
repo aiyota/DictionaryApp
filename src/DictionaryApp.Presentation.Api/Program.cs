@@ -1,5 +1,6 @@
 using DictionaryApp.Infrastructure.IoC;
 using DictionaryApp.Presentation.Api;
+using DictionaryApp.Presentation.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

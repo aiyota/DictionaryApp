@@ -1,5 +1,6 @@
 ﻿using DictionaryApp.Application.Abstractions;
 using DictionaryApp.Application.Common.Abstractions.Authentication;
+using DictionaryApp.Application.Common.Errors;
 using DictionaryApp.Domain.Abstractions;
 using DictionaryApp.Domain.Entities;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ public class AuthenticationService : IAuthenticationService
         string password)
     {
         if (await _userData.GetByUserNameAsync(userName) is not null)
-            throw new Exception("UserName already taken");
+            throw new DuplicateUserNameException();
 
         var user = new User
         {
