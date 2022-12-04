@@ -3,7 +3,6 @@ using DictionaryApp.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services
     .AddInfrastructure()
     .AddApplication()

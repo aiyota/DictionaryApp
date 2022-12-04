@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DictionaryApp.Application\DictionaryApp.Application.csproj" />
+    <ProjectReference Include="..\DictionaryApp.Contracts\DictionaryApp.Contracts.csproj" />
+    <ProjectReference Include="..\DictionaryApp.Database\DictionaryApp.Database.sqlproj" />
+    <ProjectReference Include="..\DictionaryApp.Domain\DictionaryApp.Domain.csproj" />
+    <ProjectReference Include="..\DictionaryApp.Infrastructure\DictionaryApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
