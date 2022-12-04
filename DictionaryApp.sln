@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{128FE856-C15E-4D22-BCF9-6E38A439D2EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E47EDD28-D726-479F-AC0B-FF7AFCD3B494}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryApp.Presentation.Api", "src\DictionaryApp.Presentation.Api\DictionaryApp.Presentation.Api.csproj", "{CDBAD031-634A-4ECA-952B-9F9B94D0D396}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDBAD031-634A-4ECA-952B-9F9B94D0D396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBAD031-634A-4ECA-952B-9F9B94D0D396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBAD031-634A-4ECA-952B-9F9B94D0D396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBAD031-634A-4ECA-952B-9F9B94D0D396}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDBAD031-634A-4ECA-952B-9F9B94D0D396} = {128FE856-C15E-4D22-BCF9-6E38A439D2EE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {688D4527-F563-4473-8665-10AA97DAC6FE}
+	EndGlobalSection
+EndGlobal
