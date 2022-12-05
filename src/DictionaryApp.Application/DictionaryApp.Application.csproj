@@ -18,4 +18,8 @@
     <ProjectReference Include="..\DictionaryApp.Domain\DictionaryApp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\Profiles\" />
+  </ItemGroup>
+
 </Project>

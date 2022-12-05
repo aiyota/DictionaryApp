@@ -2,12 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
+using System.Security.Claims;
 
 namespace DictionaryApp.Presentation.Api.Controllers;
 
 [ApiController]
 public abstract class ApiControllerBase : ControllerBase
 {
+    public Guid? UserId
+    {
+        get
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            return (userId is null) ? null : Guid.Parse(userId);
+        }
+    }
 
     /// <summary>
     /// Sets token as an HTTP Only cookie on the response.

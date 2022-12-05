@@ -24,7 +24,7 @@ public class AuthenticationService : IAuthenticationService
         _hashingService = hashingService;
     }
 
-    public async Task<AuthenticationResult> Register(
+    public async Task<AuthenticationResult> RegisterAsync(
         string userName,
         string firstName,
         string lastName,
@@ -51,7 +51,7 @@ public class AuthenticationService : IAuthenticationService
         return new AuthenticationResult(newUser, token, cookieOptions);
     }
 
-    public async Task<AuthenticationResult> Login(
+    public async Task<AuthenticationResult> LoginAsync(
         string userName,
         string password)
     {
@@ -67,12 +67,20 @@ public class AuthenticationService : IAuthenticationService
         return new AuthenticationResult(user, token, cookieOptions);
     }
 
-    public Task<UserResult> GetUser(Guid id)
+    public async Task<UserResult> GetUserByIdAsync(Guid id)
+    {
+        if (await _userData.GetByIdAsync(id) is not User user)
+            throw new UserDoesNotExistException();
+
+        return new UserResult(user);
+    }
+
+    public Task<UserResult> GetUserByUserNameAsync(string userName)
     {
         throw new NotImplementedException();
     }
 
-    public Task<UserResult> GetUser(string email)
+    public Task<UserResult> GetUserByEmailAsync(string email)
     {
         throw new NotImplementedException();
     }

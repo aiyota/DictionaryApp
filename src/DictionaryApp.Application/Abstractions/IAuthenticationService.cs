@@ -5,20 +5,22 @@ namespace DictionaryApp.Application.Abstractions;
 
 public interface IAuthenticationService
 {
-    Task<AuthenticationResult> Register(
+    Task<AuthenticationResult> RegisterAsync(
         string userName,
         string firstName,
         string lastName,
         string email,
         string password);
 
-    Task<AuthenticationResult> Login(
+    Task<AuthenticationResult> LoginAsync(
         string userName,
         string password);
 
-    Task<UserResult> GetUser(Guid id);
+    Task<UserResult> GetUserByIdAsync(Guid id);
 
-    Task<UserResult> GetUser(string email);
+    Task<UserResult> GetUserByEmailAsync(string email);
+
+    Task<UserResult> GetUserByUserNameAsync(string userName);
 
     CookieOptions GetRemoveTokenFromCookieOptions();
 
