@@ -22,6 +22,7 @@ public class AuthController : ApiControllerBase
         _mapper = mapper;
     }
 
+    [AllowAnonymous]
     [HttpPost(ApiRoutes.Auth.Register)]
     public async Task<IActionResult> Register(RegisterRequest request)
     {

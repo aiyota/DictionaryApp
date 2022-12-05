@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DictionaryApp.Presentation.Api.Common;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
 
@@ -14,7 +15,7 @@ public abstract class ApiControllerBase : ControllerBase
     /// <param name="token">The token.</param>
     protected void SetTokenAsCookie(string token, CookieOptions cookieOptions)
     {
-        Response.Cookies.Append("X-Access-Token", token, cookieOptions);
+        Response.Cookies.Append(CustomHeaders.AccessToken, token, cookieOptions);
     }
 
     /// <summary>
@@ -23,7 +24,7 @@ public abstract class ApiControllerBase : ControllerBase
     /// <param name="token">The token.</param>
     protected void RemoveTokenFromCookies(CookieOptions cookieOptions)
     {
-        Response.Cookies.Append("X-Access-Token", "", cookieOptions);
+        Response.Cookies.Append(CustomHeaders.AccessToken, "", cookieOptions);
     }
 
     [NonAction]
