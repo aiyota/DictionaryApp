@@ -3,6 +3,8 @@ using DictionaryApp.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using DictionaryApp.Application.Abstractions;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using DictionaryApp.Presentation.Api.Mapping;
 
 namespace DictionaryApp.Presentation.Api.Controllers;
 
@@ -10,10 +12,14 @@ namespace DictionaryApp.Presentation.Api.Controllers;
 public class AuthController : ApiControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
+    private readonly IMapper _mapper;
 
-    public AuthController(IAuthenticationService authenticationService)
+    public AuthController(
+        IAuthenticationService authenticationService,
+        IMapper mapper)
     {
         _authenticationService = authenticationService;
+        _mapper = mapper;
     }
 
     [HttpPost(ApiRoutes.Auth.Register)]
@@ -28,7 +34,7 @@ public class AuthController : ApiControllerBase
 
         SetTokenAsCookie(result.Token, result.CookieOptions);
 
-        return Ok();
+        return Ok(_mapper.ResultToResponse(result));
     }
 
     [AllowAnonymous]
@@ -41,6 +47,6 @@ public class AuthController : ApiControllerBase
 
         SetTokenAsCookie(result.Token, result.CookieOptions);
 
-        return Ok();
+        return Ok(_mapper.ResultToResponse(result));
     }
 }
