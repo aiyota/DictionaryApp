@@ -62,6 +62,7 @@ public class UserData : IUserData
             new
             {
                 Id = id,
+                UserName = userName,
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,

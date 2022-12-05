@@ -85,6 +85,24 @@ public class AuthenticationService : IAuthenticationService
         throw new NotImplementedException();
     }
 
+    public async Task<UserResult> UpdateUserAsync(
+        Guid userId,
+        string userName,
+        string firstName,
+        string lastName)
+    {
+        if (await _userData.GetByIdAsync(userId) is null)
+            throw new UserDoesNotExistException();
+
+        var updatedUser = await _userData.UpdateAsync(
+            userId,
+            userName,
+            firstName,
+            lastName);
+        
+        return new UserResult(updatedUser);
+    }
+
     public CookieOptions GetRemoveTokenFromCookieOptions() =>
         _tokenGenerator.GetRemoveTokenFromCookieOptions();
 

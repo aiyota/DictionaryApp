@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using DictionaryApp.Presentation.Api.Mapping;
 using DictionaryApp.Domain.Entities;
+using DictionaryApp.Application.Services.Common.Authentication;
 
 namespace DictionaryApp.Presentation.Api.Controllers;
 
@@ -56,6 +57,18 @@ public class AuthController : ApiControllerBase
     public async Task<ActionResult<UserResponse>> GetCurrentUser()
     {
         var result = await _authenticationService.GetUserByIdAsync(UserId ?? Guid.Empty);
+
+        return Ok(_mapper.ResultToResponse(result));
+    }
+
+    [HttpPost(ApiRoutes.Auth.UpdateCurrentUser)]
+    public async Task<ActionResult<UserResponse>> UpdateCurrentUser(UpdateRequest request)
+    {
+        var result = await _authenticationService.UpdateUserAsync(
+            UserId ?? Guid.Empty,
+            request.UserName,
+            request.FirstName,
+            request.LastName);
 
         return Ok(_mapper.ResultToResponse(result));
     }
