@@ -14,6 +14,8 @@ public static class DependencyInjection
         this IServiceCollection services,
         ConfigurationManager configuration)
     {
+        services.ConfigureCors(configuration);
+
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddControllers();
 
@@ -88,6 +90,24 @@ public static class DependencyInjection
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
                 };
             });
+
+        return services;
+    }
+
+    public static IServiceCollection ConfigureCors(this IServiceCollection services, ConfigurationManager configuration)
+    {
+        var allowedOrigins = configuration.GetSection("AllowedOrigins").Get<string[]>();
+        services.AddCors(options =>
+        {
+            options.AddPolicy(name: CorsPolicies.AllowSpecificOrigins,
+                            policy =>
+                            {
+                                policy.WithOrigins(allowedOrigins)
+                                    .AllowCredentials()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader();
+                            });
+        });
 
         return services;
     }
