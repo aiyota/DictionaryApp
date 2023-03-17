@@ -87,9 +87,9 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<UserResult> UpdateUserAsync(
         Guid userId,
-        string userName,
-        string firstName,
-        string lastName)
+        string? userName,
+        string? firstName,
+        string? lastName)
     {
         if (await _userData.GetByIdAsync(userId) is null)
             throw new UserDoesNotExistException();

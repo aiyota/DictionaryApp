@@ -5,8 +5,6 @@ using DictionaryApp.Application.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using DictionaryApp.Presentation.Api.Mapping;
-using DictionaryApp.Domain.Entities;
-using DictionaryApp.Application.Services.Common.Authentication;
 
 namespace DictionaryApp.Presentation.Api.Controllers;
 

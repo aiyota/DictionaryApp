@@ -24,9 +24,9 @@ public interface IAuthenticationService
 
     Task<UserResult> UpdateUserAsync(
         Guid userId,
-        string userName,
-        string firstName,
-        string lastName);
+        string? userName,
+        string? firstName,
+        string? lastName);
 
     CookieOptions GetRemoveTokenFromCookieOptions();
 
