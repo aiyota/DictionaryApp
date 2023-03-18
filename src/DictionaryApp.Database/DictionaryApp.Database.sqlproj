@@ -56,17 +56,19 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dbo" />
-    <Folder Include="dbo\Tables" />
-    <Folder Include="dbo\StoredProcedures" />
     <Folder Include="PublishProfiles" />
+    <Folder Include="Auth" />
+    <Folder Include="Auth\StoredProcedures" />
+    <Folder Include="Auth\Tables" />
+    <Folder Include="Schemas" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\User.sql" />
-    <Build Include="dbo\StoredProcedures\spUser_Create.sql" />
-    <Build Include="dbo\StoredProcedures\spUser_Delete.sql" />
-    <Build Include="dbo\StoredProcedures\spUser_Get.sql" />
-    <Build Include="dbo\StoredProcedures\spUser_Update.sql" />
+    <Build Include="Auth\StoredProcedures\spUser_Create.sql" />
+    <Build Include="Auth\StoredProcedures\spUser_Delete.sql" />
+    <Build Include="Auth\StoredProcedures\spUser_Get.sql" />
+    <Build Include="Auth\StoredProcedures\spUser_Update.sql" />
+    <Build Include="Auth\Tables\User.sql" />
+    <Build Include="Schemas\Auth.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\DictionaryApp.Database.Local.publish.xml" />

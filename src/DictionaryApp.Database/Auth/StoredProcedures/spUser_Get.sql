@@ -4,7 +4,7 @@
 -- Description:	Gets user(s) by ID or Email. If nothing is passed 
 --				into this args, it will return all users.
 -- =============================================
-CREATE PROCEDURE [dbo].[spUser_Get]
+CREATE PROCEDURE [Auth].[spUser_Get]
 	 @Id nvarchar(36) = NULL
 	,@UserName nvarchar(255) = NULL
 	,@Email nvarchar(255) = NULL
@@ -20,7 +20,7 @@ BEGIN
 		,[EmailConfirmed]
 		,[DateJoined]
 		,[DateModified]
-	FROM [dbo].[User]
+	FROM [Auth].[User]
 	WHERE 
 		(@Id IS NULL OR [Id] = @Id)
 		AND

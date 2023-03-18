@@ -3,7 +3,7 @@
 -- Create date: 12/4/2022
 -- Description:	Creates a new user.
 -- =============================================
-CREATE PROCEDURE [dbo].[spUser_Create]
+CREATE PROCEDURE [Auth].[spUser_Create]
 	 @UserName nvarchar(100)
 	,@FirstName nvarchar(100)
 	,@LastName nvarchar(100)
@@ -12,7 +12,7 @@ CREATE PROCEDURE [dbo].[spUser_Create]
 AS
 BEGIN
 	DECLARE @Id uniqueidentifier = NEWID()
-	INSERT INTO [dbo].[User]
+	INSERT INTO [Auth].[User]
 	(
 		 [Id]
 		,[UserName]
@@ -29,5 +29,5 @@ BEGIN
 		,@PasswordHash
 	);
 	
-	EXEC spUser_Get @Id, NULL;
+	EXEC [Auth].[spUser_Get] @Id, NULL;
 END

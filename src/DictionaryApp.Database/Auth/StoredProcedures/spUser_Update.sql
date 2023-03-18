@@ -4,7 +4,7 @@
 -- Description:	Will patch a record. @Id is required, everything else 
 --				is optional. Will update whatever optional data you pass in.
 -- =============================================
-CREATE PROCEDURE [dbo].[spUser_Update]
+CREATE PROCEDURE [Auth].[spUser_Update]
 	 @UserName nvarchar(100)
 	,@Id nvarchar(36)
 	,@FirstName nvarchar(100) = NULL
@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[spUser_Update]
 	,@EmailConfirmed bit = NULL
 AS
 BEGIN
-	UPDATE [dbo].[User]
+	UPDATE [Auth].[User]
 	SET
 		 [UserName] = ISNULL(@UserName, [UserName])
 		,[FirstName] = ISNULL(@FirstName, [FirstName])
@@ -25,5 +25,5 @@ BEGIN
 		,[DateModified] = GETDATE()
 	WHERE [Id] = @Id
 
-	EXEC spUser_Get @Id, NULL;
+	EXEC [Auth].[spUser_Get] @Id, NULL;
 END
