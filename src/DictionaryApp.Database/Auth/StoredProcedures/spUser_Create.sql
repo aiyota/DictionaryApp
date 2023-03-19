@@ -1,7 +1,7 @@
 ﻿-- =============================================
 -- Author:		Aaron Y.
 -- Create date: 12/4/2022
--- Description:	Creates a new user.
+-- Description:	Creates a new user and selects user's ID.
 -- =============================================
 CREATE PROCEDURE [Auth].[spUser_Create]
 	 @UserName nvarchar(100)
@@ -29,5 +29,5 @@ BEGIN
 		,@PasswordHash
 	);
 	
-	EXEC [Auth].[spUser_Get] @Id, NULL;
+	SELECT @Id;
 END

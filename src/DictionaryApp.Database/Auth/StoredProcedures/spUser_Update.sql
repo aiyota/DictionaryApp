@@ -24,6 +24,4 @@ BEGIN
 		,[EmailConfirmed] = ISNULL(@EmailConfirmed, [EmailConfirmed])
 		,[DateModified] = GETDATE()
 	WHERE [Id] = @Id
-
-	EXEC [Auth].[spUser_Get] @Id, NULL;
 END

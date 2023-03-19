@@ -16,7 +16,7 @@ public class UserData : IUserData
 
     public async Task<User> CreateAsync(User user)
     {
-        var result = await QueryAsync<dynamic, User>(
+        var id = await QueryAsync<dynamic, Guid>(
             StoredProcedures.User.Create,
             new { 
                 user.UserName, 
@@ -26,7 +26,9 @@ public class UserData : IUserData
                 user.PasswordHash 
             });
 
-        return result!;
+
+        var newUser = await GetByIdAsync(id);
+        return newUser!;
     }
 
     public Task<bool> DeleteAsync(Guid userId)
@@ -49,7 +51,7 @@ public class UserData : IUserData
         return QueryAsync<dynamic, User>(StoredProcedures.User.Get, new { Email = email });
     }
 
-    public Task<User> UpdateAsync(
+    public async Task<User> UpdateAsync(
         Guid id,
         string? userName = null,
         string? firstName = null,
@@ -57,7 +59,7 @@ public class UserData : IUserData
         string? email = null,
         string? passwordHash = null)
     {
-        var result = QueryAsync<dynamic, User>(
+        await QueryAsync<dynamic, User>(
             StoredProcedures.User.Update,
             new
             {
@@ -68,11 +70,12 @@ public class UserData : IUserData
                 Email = email,
                 PasswordHash = passwordHash
             });
+        var user = await GetByIdAsync(id);
 
-        if (result is null)
+        if (user is null)
             throw new RecordDoesNotExistException();
 
-        return result!;
+        return user;
     }
 
     private async Task<TOutput?> QueryAsync<TParams, TOutput>(string storedProcedure, TParams parameters)
