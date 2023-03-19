@@ -60,7 +60,10 @@
     <Folder Include="Auth" />
     <Folder Include="Auth\StoredProcedures" />
     <Folder Include="Auth\Tables" />
-    <Folder Include="Schemas" />
+    <Folder Include="Dictionary" />
+    <Folder Include="Dictionary\Tables" />
+    <Folder Include="Dictionary\Schema" />
+    <Folder Include="Auth\Schema" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Auth\StoredProcedures\spUser_Create.sql" />
@@ -68,9 +71,35 @@
     <Build Include="Auth\StoredProcedures\spUser_Get.sql" />
     <Build Include="Auth\StoredProcedures\spUser_Update.sql" />
     <Build Include="Auth\Tables\User.sql" />
-    <Build Include="Schemas\Auth.sql" />
+    <Build Include="Dictionary\Tables\Word.sql" />
+    <Build Include="Dictionary\Tables\PartOfSpeech.sql" />
+    <Build Include="Dictionary\Tables\AlternateForm.sql" />
+    <Build Include="Dictionary\Tables\Pronunciation.sql" />
+    <Build Include="Dictionary\Tables\Region.sql" />
+    <Build Include="Dictionary\Tables\Definition.sql" />
+    <Build Include="Dictionary\Tables\Source.sql" />
+    <Build Include="Dictionary\Tables\Author.sql" />
+    <Build Include="Dictionary\Tables\PlaceOfOrigin.sql" />
+    <Build Include="Dictionary\Tables\SourceAuthors.sql" />
+    <Build Include="Dictionary\Tables\Example.sql" />
+    <Build Include="Dictionary\Tables\Category.sql" />
+    <Build Include="Dictionary\Schema\Dictionary.sql" />
+    <Build Include="Auth\Schema\Auth.sql" />
+    <Build Include="Dictionary\Tables\Status.sql" />
+    <Build Include="Dictionary\Tables\EtymologyWord.sql" />
+    <Build Include="Dictionary\Tables\Language.sql" />
+    <Build Include="Dictionary\Tables\EtymologyWordPronunciation.sql" />
+    <Build Include="Dictionary\Tables\EtymologyWordDefinition.sql" />
+    <Build Include="Dictionary\Tables\WordEtymologyWords.sql" />
+    <Build Include="Dictionary\Tables\WordNote.sql" />
+    <Build Include="Dictionary\Tables\WordNoteCategory.sql" />
+    <Build Include="Dictionary\Tables\Synonyms.sql" />
+    <Build Include="Dictionary\Tables\Antonyms.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishProfiles\DictionaryApp.Database.Local.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DictionaryApp.Database.refactorlog" />
   </ItemGroup>
 </Project>

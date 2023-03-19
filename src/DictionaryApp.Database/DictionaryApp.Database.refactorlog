@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="abfe8a37-6668-42bf-8397-5a5ffa0ec62e" ChangeDateTime="03/18/2023 22:50:50">
+    <Property Name="ElementName" Value="[dbo].[SourceAuthors].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SourceAuthors]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="95994592-2f77-4760-99ff-078efb855b3c" ChangeDateTime="03/18/2023 23:50:06">
+    <Property Name="ElementName" Value="[Dictionary].[EtymologyWord].[OtherPr]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Dictionary].[EtymologyWord]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OtherProperties" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4185d107-cee5-4a3a-8cf3-be2ccf5d7ec7" ChangeDateTime="03/18/2023 23:52:35">
+    <Property Name="ElementName" Value="[dbo].[WordEtymologyWords].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WordEtymologyWords]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WordId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="beb1efad-ca5d-45cd-9285-1fab8f3ab3b5" ChangeDateTime="03/19/2023 03:36:44">
+    <Property Name="ElementName" Value="[dbo].[Synonyms].[Word1Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Synonyms]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Word2Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="144fe2fe-650d-4f93-81e6-705d74ca0af8" ChangeDateTime="03/19/2023 03:36:54">
+    <Property Name="ElementName" Value="[dbo].[Synonyms].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Synonyms]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Word1Id" />
+  </Operation>
+</Operations>
