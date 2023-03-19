@@ -10,6 +10,6 @@
     [StatusId] INT NOT NULL DEFAULT 1 , 
     CONSTRAINT [FK_Definition_Word] FOREIGN KEY ([WordId]) REFERENCES [Dictionary].[Word]([Id]), 
     CONSTRAINT [FK_Definition_Source] FOREIGN KEY ([SourceId]) REFERENCES [Dictionary].[Source]([Id]), 
-    CONSTRAINT [FK_Definition_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Dictionary].[Category]([Id]), 
+    CONSTRAINT [FK_Definition_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Dictionary].[DefinitionCategory]([Id]), 
     CONSTRAINT [FK_Definition_Status] FOREIGN KEY ([StatusId]) REFERENCES [Dictionary].[Status]([Id])
 )

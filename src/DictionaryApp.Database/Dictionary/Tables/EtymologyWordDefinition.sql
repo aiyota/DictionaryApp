@@ -9,5 +9,5 @@
     [IsCirca] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_EtymologyDefinition_Word] FOREIGN KEY ([EtymologyWordId]) REFERENCES [Dictionary].[EtymologyWord]([Id]), 
     CONSTRAINT [FK_EtymologyDefinition_Source] FOREIGN KEY ([SourceId]) REFERENCES [Dictionary].[Source]([Id]), 
-    CONSTRAINT [FK_EtymologyDefinition_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Dictionary].[Category]([Id])
+    CONSTRAINT [FK_EtymologyDefinition_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Dictionary].[DefinitionCategory]([Id])
 )

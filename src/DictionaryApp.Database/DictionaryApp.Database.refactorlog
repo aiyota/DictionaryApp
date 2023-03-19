@@ -35,4 +35,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Word1Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4309b0dd-339b-47cc-bb6a-fd9d125d2e4d" ChangeDateTime="03/19/2023 04:44:43">
+    <Property Name="ElementName" Value="[Dictionary].[Category]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[Dictionary]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[DefinitionCategory]" />
+  </Operation>
 </Operations>

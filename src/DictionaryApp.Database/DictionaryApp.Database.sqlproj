@@ -82,7 +82,7 @@
     <Build Include="Dictionary\Tables\PlaceOfOrigin.sql" />
     <Build Include="Dictionary\Tables\SourceAuthors.sql" />
     <Build Include="Dictionary\Tables\Example.sql" />
-    <Build Include="Dictionary\Tables\Category.sql" />
+    <Build Include="Dictionary\Tables\DefinitionCategory.sql" />
     <Build Include="Dictionary\Schema\Dictionary.sql" />
     <Build Include="Auth\Schema\Auth.sql" />
     <Build Include="Dictionary\Tables\Status.sql" />
